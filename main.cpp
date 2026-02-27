@@ -4,10 +4,13 @@
 
 int main(void) {
    string chaine("(1+34)*123");
+   string chaine2("1+2*3");
+   string chaine3("1");
+   string chaine4("1+2");
 
-   cout<<"Analyse de la chaine : "<<chaine<<endl;
+   cout<<"Analyse de la chaine : "<<chaine4<<endl;
 
-   Lexer l(chaine);
+   Lexer l(chaine4);
    Automate automate(l);
 
    // Symbole * s;
