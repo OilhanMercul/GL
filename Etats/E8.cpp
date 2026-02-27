@@ -10,11 +10,11 @@ bool E8::transition(Automate & automate, Symbole * s) {
     case CLOSEPAR:
     case FIN:
     {
-        // r3 : E → E * E (3 symboles)
+        //regle E -> E * E
         Expr* s1 = (Expr*) automate.popSymbol();   // E de droite
-        automate.popAndDestroySymbol();             // jette le '*'
+        automate.popAndDestroySymbol();             // jeter le '*'
         Expr* s2 = (Expr*) automate.popSymbol();   // E de gauche
-        automate.reduction(3, new Expr(s2->getValeur() * s1->getValeur()));
+        automate.reduction(3, new Expr(s2->getValeur() * s1->getValeur())); // reduction de E*E en E
         break;
     }
     default:

@@ -9,10 +9,11 @@ bool E9::transition(Automate & automate, Symbole * s) {
     case MULT:
     case CLOSEPAR:
     case FIN: {
-        automate.popAndDestroySymbol();
-        Expr * s1 = (Expr*) automate.popSymbol(); 
-        automate.popAndDestroySymbol();
-        automate.reduction(3, new Expr(s1->getValeur()));
+        //regle E -> (E)
+        automate.popAndDestroySymbol(); // jeter le ')'
+        Expr * s1 = (Expr*) automate.popSymbol();  // E entre les parenthèses
+        automate.popAndDestroySymbol(); // jeter le '('
+        automate.reduction(3, new Expr(s1->getValeur())); // reduction de (E) en E
         break;
     }
     default:

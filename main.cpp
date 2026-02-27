@@ -17,6 +17,7 @@ int main(void) {
         Lexer l(chaine);
         Automate automate(l);
         bool fini = false;
+        //Lecture des symboles jusqu'à ce que l'automate indique que l'expression est acceptée ou rejetée
         while (!fini) fini = automate.lecture();
         cout << "Résultat = " << automate.pileSymboles.back()->getValeur() << endl;
     }
@@ -24,6 +25,5 @@ int main(void) {
         cerr << "Erreur de syntaxe dans l'expression !" << endl;
         return 1;
     }
-
     return 0;
 }

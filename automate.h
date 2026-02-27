@@ -6,27 +6,25 @@
 #include "symbole.h"
 using namespace std;
 
+
 class Automate {
-public:
+    public:
+        //Constructeur
+        Automate(Lexer& lexer);
 
-    //Constructeur
-    Automate(Lexer& lexer);
+        //Destructeur
+        ~Automate();
 
-    //Destructeur
-    ~Automate();
+        //Fonctions
+        void decalage(Symbole * s, Etat * e);
+        void reduction(int n, Symbole * s);
+        void transitionsimple(Symbole * s, Etat * e);
+        void popAndDestroySymbol();
+        Symbole* popSymbol();
+        bool lecture();
 
-    //Fonctions
-    void decalage(Symbole * s, Etat * e);
-    void reduction(int n, Symbole * s);
-    void transitionsimple(Symbole * s, Etat * e);
-    void popAndDestroySymbol();
-    Symbole* popSymbol();
-    bool lecture();
-
-    //Attributs
-    Lexer& lexer;
-    vector<Etat*> pileEtats;
-    vector<Symbole*> pileSymboles;
-    
-    
+        //Attributs
+        Lexer& lexer;
+        vector<Etat*> pileEtats;
+        vector<Symbole*> pileSymboles;
 };

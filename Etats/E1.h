@@ -4,6 +4,7 @@
 #include "../etat.h"
 using namespace std;
 
+
 class E1 : public Etat {
     public:
         E1() : Etat("E1") {}

@@ -4,7 +4,7 @@
 #include "automate.h"
 using namespace std;
 
-// Comptage des tests
+// Compteurs des tests
 int nb_tests  = 0;
 int nb_reussi = 0;
 
@@ -33,8 +33,9 @@ void tester(string chaine, int attendu) {
          << " (attendu: " << attendu << ")" << endl;
 }
 
+
 int main() {
-    cout << "TESTS UNITAIRES\n" << endl;
+    cout << endl << "TESTS UNITAIRES" << endl << endl;
     
     // Valeur simple
     cout << "Valeurs simples" << endl;
@@ -69,6 +70,6 @@ int main() {
     tester("1++2", -1);        // Syntaxe incorrecte
     tester("1+*2", -1);        // Syntaxe incorrecte
 
-    cout << endl << nb_reussi << "/" << nb_tests << " tests reussis" << endl;
+    cout << endl << "CONCLUSION" << endl << nb_reussi << "/" << nb_tests << " tests reussis" << endl;
     return nb_tests - nb_reussi;
 }

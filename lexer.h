@@ -4,8 +4,8 @@
 #include "symbole.h"
 using namespace std;
 
-class Lexer {
 
+class Lexer {
    public:
       Lexer(string s) : flux(s), tete(0), tampon(nullptr) { }
       ~Lexer() { }

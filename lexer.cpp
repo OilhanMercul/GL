@@ -1,13 +1,12 @@
 #include "lexer.h"
 
+//Consulter: retourne le symbole courant
 Symbole * Lexer::Consulter() {
    if (!tampon) {
-
       if (tete==flux.length())
          tampon = new Symbole(FIN);
       else
       {
-
          switch (flux[tete]) {
             case '(':
                tampon = new Symbole(OPENPAR);
@@ -45,6 +44,7 @@ Symbole * Lexer::Consulter() {
    return tampon;
 }
 
+//Avancer: passage au symbole suivant en réinitialisant le tampon
 void Lexer::Avancer() {
    tampon = nullptr;
 }

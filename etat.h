@@ -5,6 +5,7 @@
 #include <stdexcept>
 using namespace std;
 
+//Declaration de la classe Automate pour éviter les dépendances circulaires
 class Automate;
 
 class Etat {

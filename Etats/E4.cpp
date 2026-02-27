@@ -15,7 +15,7 @@ bool E4::transition(Automate & automate, Symbole * s) {
         automate.decalage(s, new E2);
         break;
     case EXPR:
-        automate.transitionsimple(s, new E7);
+        automate.transitionsimple(s, new E7); //car fini par une expression !
         break;
     default:
         throw ErreurSyntaxe("Erreur de syntaxe dans E4 : token inattendu");

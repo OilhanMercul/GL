@@ -10,6 +10,7 @@ bool E7::transition(Automate & automate, Symbole * s) {
     case CLOSEPAR:
     case FIN:
     {
+        //regle E -> E + E
         Expr* s1 = (Expr*) automate.popSymbol();
         automate.popAndDestroySymbol();   // jette le '+'
         Expr* s2 = (Expr*) automate.popSymbol();

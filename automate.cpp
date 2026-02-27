@@ -37,21 +37,20 @@ void Automate::reduction(int n,Symbole * s) {
     pileEtats.back()->transition(*this, s);
 }
 
-//Transition simple
+//Transition simple : pas d'avancement du lexer car symbole non-terminal
 void Automate::transitionsimple(Symbole* s, Etat* e) {
     pileSymboles.push_back(s);
     pileEtats.push_back(e);
-    //pas avancement du lexer car symbole non-terminal
 }
 
-//Recuperer le symbole en haut de la pile
+//PopSymbol: recuperer et enlever le symbole en haut de la pile
 Symbole* Automate::popSymbol() {
     Symbole* s = pileSymboles.back();
     pileSymboles.pop_back();
     return s;
 }
 
-//Recuperer le symbole en haut de la pile et le supprimer
+//PopAndDestroySymbol: supprimer le symbole en haut de la pile sans l'exploiter (pour les signes)
 void Automate::popAndDestroySymbol() {
     delete pileSymboles.back();
     pileSymboles.pop_back();

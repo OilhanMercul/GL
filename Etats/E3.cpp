@@ -10,7 +10,8 @@ bool E3::transition(Automate & automate, Symbole * s) {
     case PLUS:
     case MULT:
     case CLOSEPAR:
-    case FIN: {
+    case FIN: { 
+        //regle E -> val
         Entier* s1 = (Entier*) automate.popSymbol(); //recup l'entier
         automate.reduction(1, new Expr(s1->getValeur())); //reduction de l'entier en expression
         break;
