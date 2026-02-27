@@ -8,24 +8,15 @@
 bool E3::transition(Automate & automate, Symbole * s) {
     switch (*s) {
     case PLUS:
-        automate.popAndDestroySymbol();
-        automate.reduction(5, new Expr(s->getValeur()));
-        break;
     case MULT:
-        automate.popAndDestroySymbol();
-        automate.reduction(5, new Expr(s->getValeur()));
-        break;
     case CLOSEPAR:
-        automate.popAndDestroySymbol();
-        automate.reduction(5, new Expr(s->getValeur()));
+    case FIN: {
+        Entier* s1 = (Entier*) automate.popSymbol(); //recup l'entier
+        automate.reduction(1, new Expr(s1->getValeur())); //reduction de l'entier en expression
         break;
-    case FIN:
-        automate.popAndDestroySymbol();;  
-        automate.reduction(5, new Expr(s->getValeur()));
-        break;
+    }
     default:
-        cout<<"Erreur de syntaxe"<<endl;
-        break;
+        throw ErreurSyntaxe("Erreur de syntaxe dans E3 : token inattendu");
     }
     return false;
 }

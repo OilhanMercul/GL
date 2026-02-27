@@ -18,8 +18,7 @@ bool E0::transition(Automate & automate, Symbole * s) {
         automate.transitionsimple(s, new E1);
         break;
     default:
-        cout<<"Erreur de syntaxe"<<endl;
-        break;
+        throw ErreurSyntaxe("Erreur de syntaxe dans E0 : token inattendu");
     }
     return false;
 }

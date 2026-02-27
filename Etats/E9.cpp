@@ -5,37 +5,18 @@
 bool E9::transition(Automate & automate, Symbole * s) {
 
     switch (*s) {
-    case PLUS: {
-        automate.popAndDestroySymbol();
-        Expr * s1 = (Expr*) automate.popSymbol(); 
-        automate.popAndDestroySymbol();
-        automate.reduction(4, new Expr(s1->getValeur()));
-        break;
-    }
-    case MULT: {
-        automate.popAndDestroySymbol();
-        Expr * s1 = (Expr*) automate.popSymbol(); 
-        automate.popAndDestroySymbol();
-        automate.reduction(4, new Expr(s1->getValeur()));
-        break;
-    }
-    case CLOSEPAR: {
-        automate.popAndDestroySymbol();
-        Expr * s1 = (Expr*) automate.popSymbol(); 
-        automate.popAndDestroySymbol();
-        automate.reduction(4, new Expr(s1->getValeur()));
-        break;
-    }
+    case PLUS: 
+    case MULT:
+    case CLOSEPAR:
     case FIN: {
         automate.popAndDestroySymbol();
         Expr * s1 = (Expr*) automate.popSymbol(); 
         automate.popAndDestroySymbol();
-        automate.reduction(4, new Expr(s1->getValeur()));
+        automate.reduction(3, new Expr(s1->getValeur()));
         break;
     }
     default:
-        cout<<"Erreur de syntaxe"<<endl;
-        break;
+        throw ErreurSyntaxe("Erreur de syntaxe dans E9 : token inattendu");
     }
     return false;
 }

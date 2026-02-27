@@ -18,8 +18,7 @@ bool E4::transition(Automate & automate, Symbole * s) {
         automate.transitionsimple(s, new E7);
         break;
     default:
-        cout<<"Erreur de syntaxe"<<endl;
-        break;
+        throw ErreurSyntaxe("Erreur de syntaxe dans E4 : token inattendu");
     }
     return false;
 }

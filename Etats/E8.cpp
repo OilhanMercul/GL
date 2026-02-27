@@ -18,8 +18,7 @@ bool E8::transition(Automate & automate, Symbole * s) {
         break;
     }
     default:
-        cout << "Erreur de syntaxe E8" << endl;
-        break;
+        throw ErreurSyntaxe("Erreur de syntaxe dans E8 : token inattendu");
     }
     return false;
 }

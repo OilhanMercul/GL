@@ -2,6 +2,7 @@
 
 #include <string>
 #include "symbole.h"
+#include <stdexcept>
 using namespace std;
 
 class Automate;
@@ -14,4 +15,10 @@ class Etat {
         virtual bool transition (Automate & automate, Symbole * s) = 0;
     protected:
         string name;
+};
+
+// Classe d'exception pour les erreurs de syntaxe
+class ErreurSyntaxe : public runtime_error {
+public:
+    ErreurSyntaxe(string msg) : runtime_error(msg) {}
 };

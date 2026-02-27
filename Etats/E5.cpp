@@ -18,8 +18,7 @@ bool E5::transition(Automate & automate, Symbole * s) {
         automate.transitionsimple(s, new E8);
         break;
     default:
-        cout<<"Erreur de syntaxe"<<endl;
-        break;
+        throw ErreurSyntaxe("Erreur de syntaxe dans E5 : token inattendu");
     }
     return false;
 }

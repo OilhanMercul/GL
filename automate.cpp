@@ -12,13 +12,13 @@ Automate::~Automate() {
 }
 
 //Lecture du symbole en haut de la pile et transition vers le nouvel état
-void Automate::lecture(){
+bool Automate::lecture(){
     Symbole* s = lexer.Consulter();
-    pileEtats.back()->print();
-    cout<<" | ";
-    s->Affiche();
-    cout<<endl;
-    pileEtats.back()->transition(*this, s);
+    //pileEtats.back()->print();
+    //cout<<" | ";
+    //s->Affiche();
+    //cout<<endl;
+    return pileEtats.back()->transition(*this, s);
 }
 
 //Decalage : ajoute le symbole et l'état à la pile, puis avance le lexer

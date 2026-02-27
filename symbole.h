@@ -24,7 +24,7 @@ class Entier : public Symbole {
       Entier(int v) : Symbole(INT), valeur(v) { }
       ~Entier() { }
       virtual void Affiche();
-      // int getValeur() const override { return valeur; }
+      int getValeur() const override { return valeur; }
    protected:
       int valeur;
 };

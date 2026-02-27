@@ -5,30 +5,43 @@ SOURCES = main.cpp lexer.cpp symbole.cpp automate.cpp etat.cpp Etats/E0.cpp Etat
 OBJECTS = $(SOURCES:.cpp=.o)
 TARGET = analyser
 
+# Fichiers sources/objets pour les tests (remplace main.cpp par tests.cpp)
+TEST_SOURCES = $(subst main.cpp,tests.cpp,$(SOURCES))
+TEST_OBJECTS = $(TEST_SOURCES:.cpp=.o)
+TEST_TARGET = test_analyser
+
 # Règle par défaut
 all: $(TARGET)
 
-# Lien de l'exécutable
+# Lien de l'exécutable principal
 # $@ -> $(TARGET)
 # $^ -> $(OBJECTS)
 $(TARGET): $(OBJECTS)
 	$(CC) -o $@ $^
 
+# Lien de l'exécutable de test
+$(TEST_TARGET): $(TEST_OBJECTS)
+	$(CC) -o $@ $^
+
 # Compilation des fichiers .cpp en .o
-# $< -> Premier element des pr
+# $< -> Premier element des dependances
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Déclaration des cibles phony
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test
+
+# Lancer les tests
+test: $(TEST_TARGET)
+	./$(TEST_TARGET)
 
 # Nettoyage des fichiers objets
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) $(TEST_OBJECTS)
 
-# Nettoyage complet (fichiers objets et exécutable)
+# Nettoyage complet (fichiers objets et exécutables)
 fclean: clean
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(TEST_TARGET)
 
 # Refaire la compilation
 re: fclean all

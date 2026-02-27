@@ -15,11 +15,10 @@ bool E6::transition(Automate & automate, Symbole * s) {
         automate.decalage(s, new E5);
         break;
     case CLOSEPAR:
-        automate.transitionsimple(s, new E9);
+        automate.decalage(s, new E9);
         break;
     default:
-        cout<<"Erreur de syntaxe"<<endl;
-        break;
+        throw ErreurSyntaxe("Erreur de syntaxe dans E6 : token inattendu");
     }
     return false;
 }

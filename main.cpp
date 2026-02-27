@@ -1,32 +1,29 @@
 #include <iostream>
 #include "lexer.h"
 #include "automate.h"
+#include "Etats/E0.h"
+using namespace std;
 
 int main(void) {
-   string chaine("(1+34)*123");
-   string chaine2("1+2*3");
-   string chaine3("1");
-   string chaine4("1+2");
+    string chaine;
 
-   cout<<"Analyse de la chaine : "<<chaine4<<endl;
+    // Demande une expression à l'utilisateur
+    cout << "Entrez une expression : ";
+    cin >> chaine;
 
-   Lexer l(chaine4);
-   Automate automate(l);
+    cout << "Analyse de : " << chaine << endl;
 
-   // Symbole * s;
-   // while(*(s=l.Consulter())!=FIN) {
-   //    s->Affiche();
-   //    cout<<endl;
-   //    l.Avancer();
-   //    cout<<"-----------------"<<endl;
-   // }
+    try {
+        Lexer l(chaine);
+        Automate automate(l);
+        bool fini = false;
+        while (!fini) fini = automate.lecture();
+        cout << "Résultat = " << automate.pileSymboles.back()->getValeur() << endl;
+    }
+    catch (ErreurSyntaxe& e) {
+        cerr << "Erreur de syntaxe dans l'expression !" << endl;
+        return 1;
+    }
 
-   int i = 0;
-   while( i <= 10) { // Trouver la condition d'arrêt de la boucle
-      automate.lecture();
-      i++;
-   }
-
-   return 0;
+    return 0;
 }
-
