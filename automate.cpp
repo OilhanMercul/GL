@@ -14,10 +14,6 @@ Automate::~Automate() {
 //Lecture du symbole en haut de la pile et transition vers le nouvel état
 bool Automate::lecture(){
     Symbole* s = lexer.Consulter();
-    //pileEtats.back()->print();
-    //cout<<" | ";
-    //s->Affiche();
-    //cout<<endl;
     return pileEtats.back()->transition(*this, s);
 }
 
